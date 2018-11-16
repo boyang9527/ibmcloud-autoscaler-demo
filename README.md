@@ -1,27 +1,24 @@
-# Auto-Scaling-Demo Overview
+# IBM Cloud AutoScaler Demo
 
-The Auto Scaling Demo provides a visual demonstration of the [Auto-Scaling service][auto_scaling_service_url] for Cloud Foundry apps in [IBM Cloud][ibm_cloud_url]. It helps to demonstrate how policies defined in the Auto-Scaling service can horizontally scale java application based on throughput.
+This project provides a demonstration guide of how to use [Auto-Scaling service][auto_scaling_service_url] to horizontally scale cloud foundry applications in [IBM Cloud][ibm_cloud_url]. 
 
 ## System requirements
 
 * [IBM Cloud CLI][ibm_cloud_cli]
 * [Apache HTTP server benchmarking tool `ab`](http://httpd.apache.org/download.cgi)
 
-## Build the project
-
-1. Clone the project 
-
-  ```
-  $ git clone https://github.com/boyang9527/ibmcloud-autoscaler-demo.git
-  $ cd ibmcloud-autoscaler-demo
-  ```
-
 
 ## Deploy the demo app to IBM Cloud
 
-1. Deploying with Application Manifests
+1. Clone the project and change to `app` directory
 
-Change your directory to `app`, edit the `manifest.yml` file and change the `host` parameter to your own host (the host you use will determin your application url)
+  ```
+  $ git clone https://github.com/boyang9527/ibmcloud-autoscaler-demo.git
+  $ cd ibmcloud-autoscaler-demo/app
+  ```
+
+
+2. Edit file `manifest.yml`  and change  `host`  to your own host name (the host you use will determin your application url)
 
 ```
 applications:
@@ -30,9 +27,9 @@ applications:
   memory: 256M
 ```
 
-2. If you do not have a IBM Cloud account, [sign up here][ibm_cloud_signup_url]
+3. If you do not have a IBM Cloud account, [sign up here][ibm_cloud_signup_url]
 
-3. Use [IBM Cloud CLI][ibm_cloud_cli] to login IBM Cloud,  target the public Cloud Foundry and an org/space
+4. Use [IBM Cloud CLI][ibm_cloud_cli] to login IBM Cloud,  target  public Cloud Foundry and an org/space
 
   ```
   $ ibmcloud api https://api.ng.bluemix.net
@@ -40,16 +37,17 @@ applications:
   $ ibmcloud target --cf
   ```
 
-4. Push your app to IBM Cloud
+5. Push your app to IBM Cloud
 
   ```
   $ ibmcloud cf push
   ```
 
-5. verify the app url `https://autoscaler-demo.mybluemix.net` is accessible
+6. verify the app url `https://autoscaler-demo.mybluemix.net` is accessible
 
   
 ## Bind the app with Auto-Scaling service
+
 1. Create the Auto-Scaling service in IBM Cloud
 
   ```
@@ -66,6 +64,7 @@ applications:
 ## Attach a policy to the app
 
 ### Option 1: Using IBM Cloud Console:
+
 1. Go to the IBM Cloud dashboard and enter the Auto-Scaling service console. 
 <img alt="open bluemix service" src="images/autoscaler_service.png">
 <img alt="open bluemix dashboard" src="images/autoscaler_dashboard.png">
@@ -82,10 +81,11 @@ applications:
 <img alt="autoscaling policy" src="images/autoscaler_policy.png">
 
 
-### Option 2: Using Auto-Scaling CLI
+### Option 2: Using IBM Cloud CLI
 
 
 1. Install Auto-Scaling CLI plug-in:
+
 ```
 $ ibmcloud plugin install auto-scaling
 ```
@@ -93,6 +93,7 @@ $ ibmcloud plugin install auto-scaling
 2. Attach an auto-scaling policy
 
 ```
+$ cd ..
 $ ibmcloud as policy-attach autoscaler-demo -p policy.json
 ```
 

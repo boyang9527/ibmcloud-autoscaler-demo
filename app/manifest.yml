@@ -1,0 +1,5 @@
+
+applications:
+- name: autoscaler-demo
+  host: autoscaler-demo
+  memory: 256M

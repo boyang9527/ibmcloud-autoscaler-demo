@@ -1,0 +1,19 @@
+{
+    "instanceMaxCount": 5,
+    "instanceMinCount": 1,
+    "policyTriggers": [
+      {
+        "metricType": "Throughput",
+        "breachDuration": 120,
+        "instanceStepCountDown": 1,
+        "instanceStepCountUp": 1,
+        "lowerThreshold": 10,
+        "scaleInAdjustment": "changeCapacity",
+        "scaleOutAdjustment": "changeCapacity",
+        "statWindow": 120,
+        "stepDownCoolDownSecs": 120,
+        "stepUpCoolDownSecs": 120,
+        "upperThreshold": 20
+      }
+    ]
+  }
